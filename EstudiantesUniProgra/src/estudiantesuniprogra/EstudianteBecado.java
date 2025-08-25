@@ -23,9 +23,4 @@ public class EstudianteBecado extends Estudiante{
     public void setPorcentajeBeca(double porcentajeBeca) {     
         this.porcentajeBeca = porcentajeBeca;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + "| Becado: " + porcentajeBeca;
-    }
 }

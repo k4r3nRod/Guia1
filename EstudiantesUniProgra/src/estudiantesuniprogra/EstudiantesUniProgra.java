@@ -31,6 +31,7 @@ public class EstudiantesUniProgra {
             System.out.print("Seleccione una opcion: ");
             int opcion = sc.nextInt();
             sc.nextLine(); // limpiar buffer
+            double porcentajeBeca = -1;
 
             switch (opcion) {
                 case 1:
@@ -75,48 +76,47 @@ public class EstudiantesUniProgra {
                                 }
                             }
 
-                            // === ¿Es becado? ===
-                            System.out.print("Es becado? (s/n): ");
-                            String beca = sc.nextLine();
+                            while (true) {
+                                try {
+                                    System.out.print("Porcentaje de beca (0 si es estudiante general): ");
+                                    porcentajeBeca = sc.nextDouble();
+                                    sc.nextLine(); // limpiar buffer
 
-                            if (beca.equalsIgnoreCase("s")) {
-                                double porcentajeBeca = -1;
-                                while (true) {
-                                    try {
-                                        System.out.print("Porcentaje de beca (0 si es estudiante general): ");
-                                        porcentajeBeca = sc.nextDouble();
-                                        sc.nextLine(); // limpiar buffer
-
-                                        if (porcentajeBeca < 0 || porcentajeBeca > 100) {
-                                            throw new IllegalArgumentException("El porcentaje debe estar entre 0 y 100.");
-                                        }
-
-                                        if (porcentajeBeca == 0) {
-                                            // Estudiante General
-                                            registro.agregarEstudiante(est.getId(), est.getNombre(), est.getCarrera());
-                                            System.out.println("Estudiante General registrado.");
-                                        } else {
-                                            // Estudiante Becado
-                                            registro.agregarEstudiante(est.getId(), est.getNombre(), est.getCarrera(), porcentajeBeca);
-                                            System.out.println("Estudiante Becado registrado.");
-                                        }
-                                        break; // salir del while si todo salió bien
-
-                                    } catch (Exception e) {
-                                        System.out.println("Error: " + e.getMessage());
-                                        sc.nextLine(); // limpiar buffer si meten texto
+                                    if (porcentajeBeca < 0 || porcentajeBeca > 100) {
+                                        throw new IllegalArgumentException("El porcentaje debe estar entre 0 y 100.");
                                     }
+
+                                    if (porcentajeBeca == 0) {
+                                        // Estudiante General
+                                        registro.agregarEstudiante(est.getId(), est.getNombre(), est.getCarrera());
+                                        System.out.println("Estudiante General registrado.");
+                                    } else {
+                                        // Estudiante Becado
+                                        registro.agregarEstudiante(est.getId(), est.getNombre(), est.getCarrera(), porcentajeBeca);
+                                        System.out.println("Estudiante Becado registrado.");
+                                    }
+                                    break; // salir del while si todo salió bien
+
+                                } catch (Exception e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                    sc.nextLine(); // limpiar buffer si meten texto
                                 }
-                            } else {
-                                registro.agregarEstudiante(est.getId(), est.getNombre(), est.getCarrera());
                             }
 
-                            System.out.print("Desea ingresar otro estudiante? (s/n): ");
-                            String respuesta = sc.nextLine();
-                            if (!respuesta.equalsIgnoreCase("s")) {
-                                continuar = false;
-                            }
+                            String otro = "";
+                            while (true) {
+                                System.out.print("Desea ingresar otro estudiante? (s/n): ");
+                                otro = sc.nextLine().trim().toLowerCase();
 
+                                if (otro.equals("s") || otro.equals("n")) {
+                                    if (!otro.equalsIgnoreCase("s")) {
+                                        continuar = false;
+                                    }
+                                    break;
+                                } else {
+                                    System.out.println("Entrada invalida. Por favor escriba 's' para SI o 'n' para NO.");
+                                }
+                            }
                         } catch (Exception e) {
                             System.out.println("Error inesperado: " + e.getMessage());
                         }

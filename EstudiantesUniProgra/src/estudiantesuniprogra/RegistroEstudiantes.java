@@ -67,10 +67,11 @@ public class RegistroEstudiantes{
             return;
         }
         for (Estudiante e : estudiantes) {
-            System.out.println("ID: " + e.getId() + ", Nombre: " + e.getNombre() + ", Carrera: " + e.getCarrera());
+            System.out.print("ID: " + e.getId() + " | Nombre: " + e.getNombre() + " | Carrera: " + e.getCarrera());
             if (e instanceof EstudianteBecado eb) {
-                System.out.println("Beca: " + eb.getPorcentajeBeca() + "%");
+                System.out.print(" | Beca: " + eb.getPorcentajeBeca() + "%");
             }
         }
+        System.out.println("\n");
     }
 }
