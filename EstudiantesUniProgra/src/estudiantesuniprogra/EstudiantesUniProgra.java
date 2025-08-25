@@ -27,11 +27,22 @@ public class EstudiantesUniProgra {
             try {
                 System.out.println("\n--- Registro de Estudiantes ---");
                 
-                System.out.print("Ingrese ID (10 dígitos): ");
-                id = sc.nextLine();
-                if (id == null || !id.matches("\\d{10}")) {
-                    throw new IllegalArgumentException("El ID debe tener exactamente 10 dígitos.");
+                // === ID ===
+                while (true) {
+                    try {
+                        System.out.print("Ingrese ID, ejemplo, 2500012025: ");
+                        id = sc.nextLine();
+                        if (id == null || !id.matches("\\d{10}")) {
+                            throw new IllegalArgumentException("El ID debe tener exactamente 10 iígitos.");
+                        }
+                        break; // si no lanza error, sale del bucle
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                 }
+                            
+                
+                
                 
                 System.out.print("Ingrese Nombre (mínimo 5 letras): ");
                 nombre = sc.nextLine();
