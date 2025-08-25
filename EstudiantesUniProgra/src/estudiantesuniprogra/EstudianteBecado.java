@@ -8,7 +8,8 @@ package estudiantesuniprogra;
  *
  * @author karen
  */
-public class EstudianteBecado extends Estudiante{
+public class EstudianteBecado extends Estudiante {
+
     private double porcentajeBeca;
 
     public EstudianteBecado(String id, String nombre, String carrera, double porcentajeBeca) {
@@ -16,11 +17,16 @@ public class EstudianteBecado extends Estudiante{
         setPorcentajeBeca(porcentajeBeca);
     }
 
-    public double getPorcentajeBeca(){ 
-        return porcentajeBeca; 
+    public double getPorcentajeBeca() {
+        return porcentajeBeca;
     }
 
-    public void setPorcentajeBeca(double porcentajeBeca) {     
+    public void setPorcentajeBeca(double porcentajeBeca) {
         this.porcentajeBeca = porcentajeBeca;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",Becado," + porcentajeBeca;
     }
 }

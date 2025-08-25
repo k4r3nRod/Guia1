@@ -3,15 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package estudiantesuniprogra;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
+
 /**
  *
  * @author karen
  */
-public class RegistroEstudiantes{
-    private List<Estudiante> estudiantes = new ArrayList<>();
+public class RegistroEstudiantes {
+
+    private ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private final String archivo = "estudiantes.txt";
 
     // Sobrecarga de métodos
@@ -48,10 +50,19 @@ public class RegistroEstudiantes{
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
-                if (datos.length == 5 && datos[3].equals("Becado")) {
-                    agregarEstudiante(datos[0], datos[1], datos[2], Double.parseDouble(datos[4]));
-                } else if (datos.length >= 4 && datos[3].equals("General")) {
-                    agregarEstudiante(datos[0], datos[1], datos[2]);
+                if (datos[3].equals("Becado")) {
+                    EstudianteBecado eb = new EstudianteBecado("", "", "", 0);
+                    eb.setId(datos[0]);
+                    eb.setNombre(datos[1]);
+                    eb.setCarrera(datos[2]);
+                    eb.setPorcentajeBeca(Double.parseDouble(datos[4]));
+                    agregarEstudiante(eb);
+                } else if (datos[3].equals("General")) {
+                    EstudianteGeneral eg = new EstudianteGeneral("", "", "");
+                    eg.setId(datos[0]);
+                    eg.setNombre(datos[1]);
+                    eg.setCarrera(datos[2]);
+                    agregarEstudiante(eg);
                 }
             }
             System.out.println("Estudiantes cargados correctamente.");
