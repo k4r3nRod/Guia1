@@ -64,7 +64,6 @@ public class RegistroEstudiantes{
                     agregarEstudiante(datos[0], datos[1], datos[2], Double.parseDouble(datos[3]));
                 }
             }
-            System.out.println("✔| ---- Estudiantes cargados correctamente.");
         } catch (FileNotFoundException e) {
             System.out.println("x| ---- Archivo no encontrado: " + e.getMessage());
         } catch (IOException e) {
