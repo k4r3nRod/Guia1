@@ -41,13 +41,37 @@ public class EstudiantesUniProgra {
                     }
                 }
                             
+                // === Nombre ===
+                while (true) {
+                    try {
+                        System.out.print("Ingrese Nombre (mínimo 5 letras): ");
+                        nombre = sc.nextLine();
+                        nombre = nombre.trim();
+                        if (nombre.length() < 5 || !nombre.matches("^[a-zA-Z]+$")) { //matches indica si la cadena coincide o no con la expresión regular dada
+                            throw new IllegalArgumentException("El nombre debe tener solo letras y al menos 5 caracteres.");
+                        }
+                        break;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                }
+
+                // === Carrera ===
+                while (true) {
+                    try {
+                        System.out.print("Ingrese Carrera (mínimo 5 letras): ");
+                        carrera = sc.nextLine();
+                        carrera = carrera.trim();
+                        if (carrera.length() <= 5 || !carrera.matches("^[a-zA-Z]+$")) { 
+                            throw new IllegalArgumentException("La carrera debe tener solo letras y al menos 5 caracteres.");
+                        }
+                        break;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                }
                 
                 
-                
-                System.out.print("Ingrese Nombre (mínimo 5 letras): ");
-                nombre = sc.nextLine();
-                System.out.print("Ingrese Carrera (mínimo 5 letras): ");
-                carrera = sc.nextLine();
                 System.out.print("Ingrese porcentaje de beca (0 para estudiante general): ");
 
                 String becaTexto = sc.nextLine();
