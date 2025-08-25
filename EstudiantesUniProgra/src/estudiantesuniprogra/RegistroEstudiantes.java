@@ -63,7 +63,7 @@ public class RegistroEstudiantes{
     // Mostrar estudiantes usando getters
     public void mostrarEstudiantes() {
         if (estudiantes.isEmpty()) {
-            System.out.println("No hay estudiantes registrados.");
+            System.out.println("x|x No hay estudiantes registrados x|x");
             return;
         }
         for (Estudiante e : estudiantes) {

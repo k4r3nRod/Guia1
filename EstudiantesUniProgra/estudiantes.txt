@@ -1,2 +1,1 @@
-001,K,Ingeniería
-002,Juan Perez,Medicina,50.0
+ID: 2500522022 | Nombre:kaaren | Carrera:Ingenieria| Becado: 0.0

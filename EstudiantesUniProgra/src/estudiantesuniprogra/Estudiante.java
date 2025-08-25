@@ -39,7 +39,7 @@ public class Estudiante {
 
     public void setNombre(String nombre) {
         nombre = nombre.trim();
-        if (nombre.length() <= 5 || !nombre.matches("^[a-zA-Z]+$")) { //matches indica si la cadena coincide o no con la expresión regular dada
+        if (nombre.length() < 5 || !nombre.matches("^[a-zA-Z]+$")) { //matches indica si la cadena coincide o no con la expresión regular dada
             throw new IllegalArgumentException("El nombre debe tener solo letras y al menos 5 caracteres.");
         }
         this.nombre = nombre;

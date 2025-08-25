@@ -20,10 +20,7 @@ public class EstudianteBecado extends Estudiante{
         return porcentajeBeca; 
     }
 
-    public void setPorcentajeBeca(double porcentajeBeca) {
-        if (porcentajeBeca < 0 || porcentajeBeca > 100) {
-            throw new IllegalArgumentException("Porcentaje de beca debe estar entre 0 y 100");
-        }
+    public void setPorcentajeBeca(double porcentajeBeca) {     
         this.porcentajeBeca = porcentajeBeca;
     }
 
