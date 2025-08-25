@@ -20,11 +20,13 @@ public class RegistroEstudiantes{
     }
 
     public void agregarEstudiante(String id, String nombre, String carrera) {
-        estudiantes.add(new EstudianteGeneral(id, nombre, carrera));
+        EstudianteGeneral eg = new EstudianteGeneral(id, nombre, carrera);
+        estudiantes.add(eg);
     }
 
     public void agregarEstudiante(String id, String nombre, String carrera, double porcentajeBeca) {
-        estudiantes.add(new EstudianteBecado(id, nombre, carrera, porcentajeBeca));
+        EstudianteBecado eb = new EstudianteBecado(id, nombre, carrera, porcentajeBeca);
+        estudiantes.add(eb);
     }
 
     // Guardar estudiantes en archivo
