@@ -6,3 +6,9 @@
 6,Juan Perez,Medicina,50.0
 5,sadsa,Ingeniería
 6,Juan Perez,Medicina,50.0
+5,sadsa,Ingeniería
+6,Juan Perez,Medicina,50.0
+5,sadsa,Ingeniería
+8,Juan Perez,Medicina,50.0
+5,sadsa,Ingeniería
+8,dsadasd,Medicina,50.0
