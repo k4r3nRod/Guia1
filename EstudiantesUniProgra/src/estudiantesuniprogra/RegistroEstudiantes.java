@@ -26,9 +26,13 @@ public class RegistroEstudiantes {
         estudiantes.add(eg);
     }
 
-    public void agregarEstudiante(String id, String nombre, String carrera, double porcentajeBeca) {
-        EstudianteBecado eb = new EstudianteBecado(id, nombre, carrera, porcentajeBeca);
-        estudiantes.add(eb);
+    public void agregarEstudiante(String id, String nombre, String carrera, double porcentajeBeca){
+        try {
+            EstudianteBecado eb = new EstudianteBecado(id, nombre, carrera, porcentajeBeca);
+            estudiantes.add(eb);
+        } catch (IllegalArgumentException ex) {
+            throw new IllegalArgumentException(ex.getMessage());
+        }
     }
 
     // Guardar estudiantes en archivo
@@ -38,58 +42,34 @@ public class RegistroEstudiantes {
                 bw.write(e.toString());
                 bw.newLine();
             }
-            System.out.println("Estudiantes guardados correctamente.");
-        } catch (IOException ex) {
-            System.out.println("Error al guardar el archivo: " + ex.getMessage());
+            System.out.println("| ---- Registro guardado correctamente.");
+        } catch (IOException e) {
+            System.out.println("x| ---- Error al agregar estudiante: " + e.getMessage());
         }
     }
 
-    // Cargar estudiantes desde archivo
+
+    
+    //cargar datos desde el archivo
     public void cargarEstudiantes() {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                if (linea.trim().isEmpty()) {
-                    continue; // Ignorar líneas vacías
-                }
                 String[] datos = linea.split(",");
-
-                if (datos.length >= 4) { // aseguramos que haya suficientes campos
-                    if (datos[3].equalsIgnoreCase("Becado") && datos.length == 5) {
-                        try {
-                            EstudianteBecado eb = new EstudianteBecado("", "", "", 0);
-                            eb.setId(datos[0].trim());
-                            eb.setNombre(datos[1].trim());
-                            eb.setCarrera(datos[2].trim());
-                            eb.setPorcentajeBeca(Double.parseDouble(datos[4]));
-                            agregarEstudiante(eb);
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("Error en línea del archivo (becado): " + e.getMessage());
-                        }
-                    } else if (datos[3].equalsIgnoreCase("General")) {
-                        try {
-                            EstudianteGeneral eg = new EstudianteGeneral("", "", "");
-                            eg.setId(datos[0].trim());
-                            eg.setNombre(datos[1].trim());
-                            eg.setCarrera(datos[2].trim());
-                            agregarEstudiante(eg);
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("Error en línea del archivo (general): " + e.getMessage());
-                        }
-                    } else {
-                        System.out.println("Línea inválida en el archivo: " + linea);
-                    }
-                } else {
-                    System.out.println("Línea inválida en el archivo: " + linea);
+                if (datos.length == 3) {
+                    agregarEstudiante(datos[0], datos[1], datos[2]);
+                } else if (datos.length == 4) {
+                    agregarEstudiante(datos[0], datos[1], datos[2], Double.parseDouble(datos[3]));
                 }
             }
-            System.out.println("Estudiantes cargados correctamente.");
+            System.out.println("✔| ---- Estudiantes cargados correctamente.");
         } catch (FileNotFoundException e) {
-            System.out.println("Archivo no encontrado. Se creará uno nuevo al guardar.");
+            System.out.println("x| ---- Archivo no encontrado: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
+            System.out.println("x| ---- Error al leer archivo: " + e.getMessage());
         }
     }
+
 
     // Mostrar estudiantes usando getters
     public void mostrarEstudiantes() {

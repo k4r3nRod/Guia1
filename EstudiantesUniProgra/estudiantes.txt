@@ -1,3 +1,1 @@
-ID: 1111122222, Nombre:dsadsadsadsa  Carrera:dsadsadsad, Becado,5.0
-ID: 4564564564, Nombre:dsfdsgds  Carrera:dsadsafasd, General
-ID: 1478523698, Nombre:karesdsa  Carrera:dsadsdsadsadsdsadsadsad, Becado,5.0
+ID: 1234567897, Nombre:karenkare  Carrera:karesads, Becado,5.0
