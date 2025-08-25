@@ -19,6 +19,6 @@ public class EstudianteGeneral extends Estudiante {
 
     @Override
     public String toString() {
-        return super.toString() + ",General";
+        return super.toString() + ", General";
     }
 }

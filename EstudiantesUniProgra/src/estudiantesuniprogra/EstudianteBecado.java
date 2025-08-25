@@ -27,6 +27,6 @@ public class EstudianteBecado extends Estudiante {
 
     @Override
     public String toString() {
-        return super.toString() + ",Becado," + porcentajeBeca;
+        return super.toString() + ", Becado," + porcentajeBeca;
     }
 }
