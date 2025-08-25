@@ -54,23 +54,33 @@ public class RegistroEstudiantes {
                 }
                 String[] datos = linea.split(",");
 
-                if (datos.length >= 4) {
-                    if (datos[3].equalsIgnoreCase("Becado")) {
-                        EstudianteBecado eb = new EstudianteBecado("", "", "", 0);
-                        eb.setId(datos[0]);
-                        eb.setNombre(datos[1]);
-                        eb.setCarrera(datos[2]);
-                        eb.setPorcentajeBeca(Double.parseDouble(datos[4]));
-                        agregarEstudiante(eb);
+                if (datos.length >= 4) { // aseguramos que haya suficientes campos
+                    if (datos[3].equalsIgnoreCase("Becado") && datos.length == 5) {
+                        try {
+                            EstudianteBecado eb = new EstudianteBecado("", "", "", 0);
+                            eb.setId(datos[0].trim());
+                            eb.setNombre(datos[1].trim());
+                            eb.setCarrera(datos[2].trim());
+                            eb.setPorcentajeBeca(Double.parseDouble(datos[4]));
+                            agregarEstudiante(eb);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Error en línea del archivo (becado): " + e.getMessage());
+                        }
                     } else if (datos[3].equalsIgnoreCase("General")) {
-                        EstudianteGeneral eg = new EstudianteGeneral("", "", "");
-                        eg.setId(datos[0]);
-                        eg.setNombre(datos[1]);
-                        eg.setCarrera(datos[2]);
-                        agregarEstudiante(eg);
+                        try {
+                            EstudianteGeneral eg = new EstudianteGeneral("", "", "");
+                            eg.setId(datos[0].trim());
+                            eg.setNombre(datos[1].trim());
+                            eg.setCarrera(datos[2].trim());
+                            agregarEstudiante(eg);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Error en línea del archivo (general): " + e.getMessage());
+                        }
+                    } else {
+                        System.out.println("Línea inválida en el archivo: " + linea);
                     }
                 } else {
-                    System.out.println("Linea invalida en el archivo: " + linea);
+                    System.out.println("Línea inválida en el archivo: " + linea);
                 }
             }
             System.out.println("Estudiantes cargados correctamente.");
@@ -88,7 +98,8 @@ public class RegistroEstudiantes {
             return;
         }
         for (Estudiante e : estudiantes) {
-            System.out.print("ID: " + e.getId() + ", Nombre: " + e.getNombre() + ", Carrera: " + e.getCarrera());
+            
+            System.out.print("\nID: " + e.getId() + ", Nombre: " + e.getNombre() + ", Carrera: " + e.getCarrera());
             if (e instanceof EstudianteBecado eb) {
                 System.out.print(", Beca: " + eb.getPorcentajeBeca() + "%");
             }

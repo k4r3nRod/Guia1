@@ -58,6 +58,6 @@ public class Estudiante {
     }
 
     public String toString() {
-        return "ID: " + id + ", Nombre:" + nombre + ", Carrera:" + carrera;
+        return "ID: " + id + ", Nombre:" + nombre + "  Carrera:" + carrera;
     }
 }
