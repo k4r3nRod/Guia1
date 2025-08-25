@@ -4,6 +4,8 @@
  */
 package estudiantesuniprogra;
 
+import java.util.Scanner;
+
 /**
  *
  * @author karen
@@ -16,29 +18,47 @@ public class EstudiantesUniProgra {
     public static void main(String[] args) {
         // TODO code application logic here
         RegistroEstudiantes registro = new RegistroEstudiantes();
+        Scanner sc = new Scanner(System.in);
+        String continuar = "s";
 
-        try {
-            // metodo que carga los estudiantes ya existenrte
-            registro.cargarEstudiantes(); 
+        registro.cargarEstudiantes();
 
-            // para agregar nuevos estudiantes
-            registro.agregarEstudiante("5", "sadsa", "Ingeniería");
-            registro.agregarEstudiante("8", "dsadasd", "Medicina", 50);
+        while (continuar.equalsIgnoreCase("s")) {
+            try {
+                System.out.println("\n--- Registro de Estudiantes ---");
+                System.out.print("Ingrese ID (10 dígitos): ");
+                String id = sc.nextLine();
+                System.out.print("Ingrese Nombre (mínimo 5 letras): ");
+                String nombre = sc.nextLine();
+                System.out.print("Ingrese Carrera (mínimo 5 letras): ");
+                String carrera = sc.nextLine();
+                System.out.print("Ingrese porcentaje de beca (0 para estudiante general): ");
 
-            // guardar el archivo
-            registro.guardarEstudiantes();
+                String becaTexto = sc.nextLine();
+                double beca = Double.parseDouble(becaTexto); // Puede lanzar NumberFormatException
 
-            // para cargar los nuevos que se añadieron
-            registro = new RegistroEstudiantes();
-            registro.cargarEstudiantes();
+                if (beca == 0) {
+                    registro.agregarEstudiante(id, nombre, carrera);
+                } else {
+                    registro.agregarEstudiante(id, nombre, carrera, beca);
+                }
 
-            // mostrar todos los estudiantes cargados
-            registro.mostrarEstudiantes();
+                System.out.print("¿Desea agregar otro estudiante? (s/n): ");
+                continuar = sc.nextLine();
 
-        } catch (IllegalArgumentException ex) {
-            System.out.println("x| ---- Error al agregar estudiante: " + ex.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("x Error: El porcentaje debe ser un número.");
+                // vuelve al inicio del while
+            } catch (IllegalArgumentException e) {
+                System.out.println("x Error: " + e.getMessage());
+                System.out.println("Intente nuevamente.\n");
+            }
         }
 
+        registro.guardarEstudiantes();
+        registro.mostrarEstudiantes();
+        sc.close();
+
     }
-    
+
 }

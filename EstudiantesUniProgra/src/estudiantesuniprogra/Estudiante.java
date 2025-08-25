@@ -9,34 +9,30 @@ package estudiantesuniprogra;
  * @author karen
  */
 public class Estudiante {
-    protected String id="SIN ESPECIFICAR";
-    protected String nombre="SIN ESPECIFICAR";
-    protected String carrera="SIN ESPECIFICAR";
+    protected String id = "SIN ESPECIFICAR";
+    protected String nombre = "SIN ESPECIFICAR";
+    protected String carrera = "SIN ESPECIFICAR";
 
-    public Estudiante() {
-    }
-    
+    public Estudiante() {}
+
     public Estudiante(String id, String nombre, String carrera) {
-        if (id == null || id.isBlank()) {
-            throw new IllegalArgumentException("El ID no puede estar vacío.");
-        }else{
-            this.id = id;
+        if (id == null || !id.matches("\\d{10}")) {
+            throw new IllegalArgumentException("El ID debe tener exactamente 10 dígitos.");
         }
-        
-        if (nombre == null || nombre.isBlank()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío.");
-        }else{
-            this.nombre = nombre;
+        this.id = id;
+
+        if (nombre == null || !nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]{5,}")) {
+            throw new IllegalArgumentException("El nombre debe tener al menos 5 letras y solo contener caracteres válidos.");
         }
-        
-        if (carrera == null || carrera.isBlank()) {
-            throw new IllegalArgumentException("La carrera no puede estar vacía.");
-        }else{
-            this.carrera = carrera;
-        }   
-        
+        this.nombre = nombre;
+
+        if (carrera == null || !carrera.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]{5,}")) {
+            throw new IllegalArgumentException("La carrera debe tener al menos 5 letras y solo contener caracteres válidos.");
+        }
+        this.carrera = carrera;
     }
 
+    @Override
     public String toString() {
         return id + "," + nombre + "," + carrera;
     }

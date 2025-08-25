@@ -1,2 +1,3 @@
-001,K,Ingeniería
-002,Juan Perez,Medicina,50.0
+1010101010,karen,karen
+2020202020,karensk,ksadsada,5.0
+1234567891,DASDASDASD,DSADSADSADAS,5.0

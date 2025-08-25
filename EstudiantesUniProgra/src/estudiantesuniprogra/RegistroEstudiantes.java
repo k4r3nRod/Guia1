@@ -12,47 +12,36 @@ import java.util.ArrayList;
 public class RegistroEstudiantes{
 
     private ArrayList<Estudiante> estudiantes = new ArrayList<>();
-    private final String archivo = "C:\\Users\\karen\\Documents\\GitHub\\Guia1\\EstudiantesUniProgra\\src\\estudiantesuniprogra\\estudiantes.txt";
+    private final String archivo = "estudiantes.txt";
 
-    // Constructor
-    public RegistroEstudiantes() { 
-    }
+    public RegistroEstudiantes() {}
 
-    // Método 1
-    public void agregarEstudiante(Estudiante e){
+    public void agregarEstudiante(Estudiante e) {
         estudiantes.add(e);
     }
 
-    // Método 2
-    public void agregarEstudiante(String id, String nombre, String carrera){
+    public void agregarEstudiante(String id, String nombre, String carrera) {
         EstudianteGeneral eg = new EstudianteGeneral(id, nombre, carrera);
-        estudiantes.add(eg); 
+        estudiantes.add(eg);
     }
 
-    // Método 3
-    public void agregarEstudiante(String id, String nombre, String carrera, double porcentajeBeca){
-        try {
-            EstudianteBecado eb = new EstudianteBecado(id, nombre, carrera, porcentajeBeca);
-            estudiantes.add(eb);
-        } catch (IllegalArgumentException ex) {
-            throw new IllegalArgumentException(ex.getMessage());
-        }
+    public void agregarEstudiante(String id, String nombre, String carrera, double porcentajeBeca) {
+        EstudianteBecado eb = new EstudianteBecado(id, nombre, carrera, porcentajeBeca);
+        estudiantes.add(eb);
     }
 
-    // Guardar en el archivo
     public void guardarEstudiantes() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
             for (Estudiante e : estudiantes) {
                 bw.write(e.toString());
                 bw.newLine();
             }
-            System.out.println("✔| ---- Registro guardado correctamente.");
+            System.out.println("✔ Registro guardado correctamente.");
         } catch (IOException e) {
-            System.out.println("x| ---- Error al agregar estudiante: " + e.getMessage());
+            System.out.println("x Error al guardar estudiantes: " + e.getMessage());
         }
     }
 
-    // Cargar desde el archivo
     public void cargarEstudiantes() {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String linea;
@@ -64,15 +53,14 @@ public class RegistroEstudiantes{
                     agregarEstudiante(datos[0], datos[1], datos[2], Double.parseDouble(datos[3]));
                 }
             }
-            System.out.println("✔| ---- Estudiantes cargados correctamente.");
+            System.out.println("✔ Estudiantes cargados correctamente.");
         } catch (FileNotFoundException e) {
-            System.out.println("x| ---- Archivo no encontrado: " + e.getMessage());
+            System.out.println("x Archivo no encontrado. Se creará al guardar.");
         } catch (IOException e) {
-            System.out.println("x| ---- Error al leer archivo: " + e.getMessage());
+            System.out.println("x Error al leer archivo: " + e.getMessage());
         }
     }
 
-    // Mostrar estudiantes que estan en el archivo
     public void mostrarEstudiantes() {
         for (Estudiante e : estudiantes) {
             System.out.println(e);
