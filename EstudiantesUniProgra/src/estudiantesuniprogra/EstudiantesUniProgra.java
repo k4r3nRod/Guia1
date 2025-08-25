@@ -15,30 +15,59 @@ public class EstudiantesUniProgra {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner sc = new Scanner(System.in);
         RegistroEstudiantes registro = new RegistroEstudiantes();
+        registro.cargarEstudiantes();
 
-        try {
-            // metodo que carga los estudiantes ya existenrte
-            registro.cargarEstudiantes(); 
+        boolean salir = false;
+        while (!salir) {
+            System.out.println("\nBienvenido al registro de estudiantes");
+            System.out.println("1. Registrar estudiante");
+            System.out.println("2. Ver listado de estudiantes");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una opción: ");
+            int opcion = sc.nextInt();
+            sc.nextLine(); // limpiar buffer
 
-            // para agregar nuevos estudiantes
-            registro.agregarEstudiante("5", "sadsa", "Ingeniería");
-            registro.agregarEstudiante("6", "Juan Perez", "Medicina", 50);
+            switch (opcion) {
+                case 1 -> {
+                    boolean continuar = true;
+                    while (continuar) {
+                        try {
+                            System.out.print("ID: "); String id = sc.nextLine();
+                            System.out.print("Nombre: "); String nombre = sc.nextLine();
+                            System.out.print("Carrera: "); String carrera = sc.nextLine();
+                            System.out.print("¿Es becado? (s/n): "); String beca = sc.nextLine();
 
-            // guardar el archivo
-            registro.guardarEstudiantes();
+                            if (beca.equalsIgnoreCase("s")) {
+                                System.out.print("Porcentaje de beca: ");
+                                double porcentaje = sc.nextDouble();
+                                sc.nextLine();
+                                registro.agregarEstudiante(id, nombre, carrera, porcentaje);
+                            } else {
+                                registro.agregarEstudiante(id, nombre, carrera);
+                            }
 
-            // para cargar los nuevos que se añadieron
-            registro = new RegistroEstudiantes();
-            registro.cargarEstudiantes();
+                            System.out.print("¿Desea ingresar otro estudiante? (s/n): ");
+                            String respuesta = sc.nextLine();
+                            if (!respuesta.equalsIgnoreCase("s")) {
+                                continuar = false;
+                            }
 
-            // mostrar todos los estudiantes cargados
-            registro.mostrarEstudiantes();
-
-        } catch (IllegalArgumentException ex) {
-            System.out.println("x| ---- Error al agregar estudiante: " + ex.getMessage());
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Error: " + e.getMessage());
+                        }
+                    }
+                    registro.guardarEstudiantes();
+                }
+                case 2 -> registro.mostrarEstudiantes();
+                case 3 -> {
+                    System.out.println("Saliendo...");
+                    salir = true;
+                }
+                default -> System.out.println("Opción no válida.");
+            }
         }
-
+        sc.close();
     }
-    
 }

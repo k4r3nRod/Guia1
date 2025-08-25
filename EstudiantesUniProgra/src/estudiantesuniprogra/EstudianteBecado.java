@@ -9,22 +9,26 @@ package estudiantesuniprogra;
  * @author karen
  */
 public class EstudianteBecado extends Estudiante{
-    protected double porcentajeBeca=0;
+    private double porcentajeBeca;
 
-    public EstudianteBecado() {
-    }
-
-    public EstudianteBecado(String id, String nombre, String carrera, double porcentajeBeca){
+    public EstudianteBecado(String id, String nombre, String carrera, double porcentajeBeca) {
         super(id, nombre, carrera);
-        
-        if (porcentajeBeca < 0 || porcentajeBeca > 100) {
-            throw new IllegalArgumentException("Porcentaje de beca debe estar entre 0 y 100.");
-        }else{
-        this.porcentajeBeca = porcentajeBeca;
-        }
+        setPorcentajeBeca(porcentajeBeca);
     }
-    
+
+    public double getPorcentajeBeca(){ 
+        return porcentajeBeca; 
+    }
+
+    public void setPorcentajeBeca(double porcentajeBeca) {
+        if (porcentajeBeca < 0 || porcentajeBeca > 100) {
+            throw new IllegalArgumentException("Porcentaje de beca debe estar entre 0 y 100");
+        }
+        this.porcentajeBeca = porcentajeBeca;
+    }
+
+    @Override
     public String toString() {
-        return super.toString() + "," + porcentajeBeca;
-    }    
+        return super.toString() + "| Becado: " + porcentajeBeca;
+    }
 }
