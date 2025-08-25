@@ -8,3 +8,15 @@
 2500532022,Ingenieria,Ingenieia,50.0
 2500522022,karenkaren,ingenieria,45.99
 2100012020,Natasha,Licenciatuyra,2.0
+
+2020202020,karensk,ksadsada,5.0
+1234567891,DASDASDASD,DSADSADSADAS,5.0
+1234567897,sdasdsad,dsadsad
+1233654789,dsadsad,dsadsadasd,5.0
+1234567897,dsadasdsad,dsadsadsa,5.0
+2500522022,karen,ingenieria
+2500532022,Ingenieria,Ingenieia,50.0
+2500522022,karenkaren,ingenieria,45.99
+2100012020,Natasha,Licenciatuyra,2.0
+2500522022,karen,ingenieria,50.0
+1213456789,kevin,licencitura,20.0

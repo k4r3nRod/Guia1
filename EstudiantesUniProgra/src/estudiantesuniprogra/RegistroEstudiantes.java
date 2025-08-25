@@ -3,19 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package estudiantesuniprogra;
+
 import java.io.*;
 import java.util.ArrayList;
+
 /**
  *
  * @author karen
  */
-public class RegistroEstudiantes{
+public class RegistroEstudiantes {
 
     private ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private final String archivo = "estudiantes.txt";
 
-    public RegistroEstudiantes() {}
+    public RegistroEstudiantes() {
+    }
 
+    // === Métodos para agregar estudiantes ===
     public void agregarEstudiante(Estudiante e) {
         estudiantes.add(e);
     }
@@ -30,21 +34,46 @@ public class RegistroEstudiantes{
         estudiantes.add(eb);
     }
 
+    // === Método para guardar estudiantes en archivo ===
     public void guardarEstudiantes() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+        try {
+            File f = new File(archivo);
+            BufferedWriter bw;
+
+            // Si el archivo ya existe, modo append
+            if (f.exists()) {
+                bw = new BufferedWriter(new FileWriter(f, true));
+                bw.newLine();
+            } else {
+                // Si no existe, crearlo y escribir encabezado
+                bw = new BufferedWriter(new FileWriter(f));
+                bw.write("ID,NOMBRE,CARRERA,PORCENTAJE_BECA");
+                bw.newLine();
+            }
+
+            // Guardar cada estudiante
             for (Estudiante e : estudiantes) {
                 bw.write(e.toString());
                 bw.newLine();
             }
+
+            bw.close();
             System.out.println("ENHORABUENA: Registro guardado correctamente.");
         } catch (IOException e) {
             System.out.println("OH NO: Error al guardar estudiantes: " + e.getMessage());
         }
     }
 
+    // === Método para cargar estudiantes del archivo ===
     public void cargarEstudiantes() {
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            String linea;
+        File f = new File(archivo);
+        if (!f.exists()) {
+            System.out.println("OH NO: Archivo no encontrado. Se creará al guardar.");
+            return;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String linea = br.readLine(); // leer la cabecera y descartarla
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
                 if (datos.length == 3) {
@@ -54,13 +83,12 @@ public class RegistroEstudiantes{
                 }
             }
             System.out.println("ENHORABUENA: Estudiantes cargados correctamente.");
-        } catch (FileNotFoundException e) {
-            System.out.println("OH NO: Archivo no encontrado. Se creará al guardar.");
         } catch (IOException e) {
             System.out.println("OH NO: Error al leer archivo: " + e.getMessage());
         }
     }
 
+    // === Método para mostrar estudiantes en consola ===
     public void mostrarEstudiantes() {
         System.out.println("\n--- Listado de Estudiantes ---");
         for (Estudiante e : estudiantes) {

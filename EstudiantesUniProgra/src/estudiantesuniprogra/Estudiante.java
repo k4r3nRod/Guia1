@@ -17,15 +17,7 @@ public class Estudiante {
 
     public Estudiante(String id, String nombre, String carrera) {
         this.id = id;
-
-        if (nombre == null || !nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]{5,}")) {
-            throw new IllegalArgumentException("El nombre debe tener al menos 5 letras y solo contener caracteres válidos.");
-        }
         this.nombre = nombre;
-
-        if (carrera == null || !carrera.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]{5,}")) {
-            throw new IllegalArgumentException("La carrera debe tener al menos 5 letras y solo contener caracteres válidos.");
-        }
         this.carrera = carrera;
     }
 
