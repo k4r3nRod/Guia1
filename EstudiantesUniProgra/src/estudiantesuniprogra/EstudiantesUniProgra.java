@@ -22,9 +22,9 @@ public class EstudiantesUniProgra {
             registro.cargarEstudiantes(); 
 
             // para agregar nuevos estudiantes
-            registro.agregarEstudiante("6", "karen", "Ingenieria");
-            registro.agregarEstudiante("7", "cris", "Medicina", 50);
-            registro.agregarEstudiante("8", "cris", "Medicina", 50);
+            registro.agregarEstudiante("9", "karen", "Ingenieria");
+            registro.agregarEstudiante("10", "cris", "Medicina", 50);
+            registro.agregarEstudiante("11", "cris", "Medicina", 50);
 
             // guardar el archivo
             registro.guardarEstudiantes();

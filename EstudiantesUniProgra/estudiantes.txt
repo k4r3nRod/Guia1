@@ -6,3 +6,9 @@
 6,karen,Ingenieria
 7,cris,Medicina,50.0
 8,cris,Medicina,50.0
+6,karen,Ingenieria
+7,cris,Medicina,50.0
+8,cris,Medicina,50.0
+9,karen,Ingenieria
+10,cris,Medicina,50.0
+11,cris,Medicina,50.0
