@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class RegistroEstudiantes{
     private List<Estudiante> estudiantes = new ArrayList<>();
-    private final String archivo = "estudiantes.txt";
+    private final String archivo = "C:\\Users\\karen\\Documents\\GitHub\\Guia1\\EstudiantesUniProgra\\src\\estudiantesuniprogra\\estudiantes.txt";
 
     // Sobrecarga de métodos
     public void agregarEstudiante(Estudiante e) {
@@ -69,9 +69,9 @@ public class RegistroEstudiantes{
             return;
         }
         for (Estudiante e : estudiantes) {
-            System.out.print("ID: " + e.getId() + " | Nombre: " + e.getNombre() + " | Carrera: " + e.getCarrera());
+            System.out.print("\nID: " + e.getId() + " , Nombre: " + e.getNombre() + " , Carrera: " + e.getCarrera());
             if (e instanceof EstudianteBecado eb) {
-                System.out.print(" | Beca: " + eb.getPorcentajeBeca() + "%");
+                System.out.print(" , Beca: " + eb.getPorcentajeBeca() + "%");
             }
         }
         System.out.println("\n");
