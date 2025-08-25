@@ -16,9 +16,6 @@ public class Estudiante {
     public Estudiante() {}
 
     public Estudiante(String id, String nombre, String carrera) {
-        if (id == null || !id.matches("\\d{10}")) {
-            throw new IllegalArgumentException("El ID debe tener exactamente 10 dígitos.");
-        }
         this.id = id;
 
         if (nombre == null || !nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]{5,}")) {

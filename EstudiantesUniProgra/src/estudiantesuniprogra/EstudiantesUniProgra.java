@@ -19,15 +19,20 @@ public class EstudiantesUniProgra {
         // TODO code application logic here
         RegistroEstudiantes registro = new RegistroEstudiantes();
         Scanner sc = new Scanner(System.in);
-        String continuar = "s";
+        String continuar = "s", id = "SIN ESPECIFICAR", nombre = "SIN ESPECIFICAR", carrera = "SIN ESPECIFICAR";
 
         registro.cargarEstudiantes();
 
         while (continuar.equalsIgnoreCase("s")) {
             try {
                 System.out.println("\n--- Registro de Estudiantes ---");
+                
                 System.out.print("Ingrese ID (10 dígitos): ");
-                String id = sc.nextLine();
+                id = sc.nextLine();
+                if (id == null || !id.matches("\\d{10}")) {
+                    throw new IllegalArgumentException("El ID debe tener exactamente 10 dígitos.");
+                }
+                
                 System.out.print("Ingrese Nombre (mínimo 5 letras): ");
                 String nombre = sc.nextLine();
                 System.out.print("Ingrese Carrera (mínimo 5 letras): ");
