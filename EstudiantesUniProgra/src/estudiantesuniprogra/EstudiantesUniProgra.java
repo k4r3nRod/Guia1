@@ -34,9 +34,9 @@ public class EstudiantesUniProgra {
                 }
                 
                 System.out.print("Ingrese Nombre (mínimo 5 letras): ");
-                String nombre = sc.nextLine();
+                nombre = sc.nextLine();
                 System.out.print("Ingrese Carrera (mínimo 5 letras): ");
-                String carrera = sc.nextLine();
+                carrera = sc.nextLine();
                 System.out.print("Ingrese porcentaje de beca (0 para estudiante general): ");
 
                 String becaTexto = sc.nextLine();
