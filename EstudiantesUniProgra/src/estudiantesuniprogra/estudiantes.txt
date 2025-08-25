@@ -1,6 +1,2 @@
-1,sadsa,dsadasdasdasd
-2,Juan Perez,Medidsadasdsadina,50.0
-3,sadsa,Ingeniería
-4,Juan Perez,Medicina,50.0
-5,sadsa,Ingeniería
-6,Juan Perez,Medicina,50.0
+ID: 1234567897 | Nombre:KAREN | Carrera:INGENIERIA
+ID: 1234567897 | Nombre:KAREN | Carrera:INGENIERIA
