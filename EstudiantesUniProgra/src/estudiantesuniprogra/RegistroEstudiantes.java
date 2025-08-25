@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class RegistroEstudiantes{
 
     private ArrayList<Estudiante> estudiantes = new ArrayList<>();
-    private final String archivo = "C:\\Users\\karen\\Desktop\\KarenRodriguez\\EstudiantesUniProgra\\src\\estudiantesuniprogra\\estudiantes.txt";
+    private final String archivo = "C:\\Users\\karen\\Documents\\GitHub\\Guia1\\EstudiantesUniProgra\\src\\estudiantesuniprogra\\estudiantes.txt";
 
     // Constructor
     public RegistroEstudiantes() { 
