@@ -19,7 +19,7 @@ public class EstudiantesUniProgra {
         // TODO code application logic here
         RegistroEstudiantes registro = new RegistroEstudiantes();
         Scanner sc = new Scanner(System.in);
-        String continuar = "s", id = "SIN ESPECIFICAR", nombre = "SIN ESPECIFICAR", carrera = "SIN ESPECIFICAR";
+        String continuar = "s", id = "SIN ESPECIFICAR", nombre = "SIN ESPECIFICAR", carrera = "SIN ESPECIFICAR", becaTexto = "";
 
         registro.cargarEstudiantes();
 
@@ -71,16 +71,28 @@ public class EstudiantesUniProgra {
                     }
                 }
                 
-                
-                System.out.print("Ingrese porcentaje de beca (0 para estudiante general): ");
+                //beca
+                while (true) {
+                    try {
+                        System.out.print("Ingrese porcentaje de beca (0 para estudiante general): ");
+                        becaTexto = sc.nextLine();
+                        double beca = Double.parseDouble(becaTexto); // Puede lanzar NumberFormatException
 
-                String becaTexto = sc.nextLine();
-                double beca = Double.parseDouble(becaTexto); // Puede lanzar NumberFormatException
+                        if (beca < 0 || beca > 100) {
+                            throw new IllegalArgumentException("El porcentaje debe estar entre 0 y 100.");
+                        }
 
-                if (beca == 0) {
-                    registro.agregarEstudiante(id, nombre, carrera);
-                } else {
-                    registro.agregarEstudiante(id, nombre, carrera, beca);
+                        if (beca == 0) {
+                            registro.agregarEstudiante(id, nombre, carrera);
+                        } else {
+                            registro.agregarEstudiante(id, nombre, carrera, beca);
+                        }
+                        break; // salir del while si todo salió bien
+
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
+                        sc.nextLine(); // limpiar buffer si meten texto
+                    }
                 }
 
                 System.out.print("¿Desea agregar otro estudiante? (s/n): ");
