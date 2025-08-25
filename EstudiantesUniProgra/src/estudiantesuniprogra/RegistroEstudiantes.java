@@ -36,9 +36,9 @@ public class RegistroEstudiantes{
                 bw.write(e.toString());
                 bw.newLine();
             }
-            System.out.println("✔ Registro guardado correctamente.");
+            System.out.println("ENHORABUENA: Registro guardado correctamente.");
         } catch (IOException e) {
-            System.out.println("x Error al guardar estudiantes: " + e.getMessage());
+            System.out.println("OH NO: Error al guardar estudiantes: " + e.getMessage());
         }
     }
 
@@ -53,15 +53,16 @@ public class RegistroEstudiantes{
                     agregarEstudiante(datos[0], datos[1], datos[2], Double.parseDouble(datos[3]));
                 }
             }
-            System.out.println("✔ Estudiantes cargados correctamente.");
+            System.out.println("ENHORABUENA: Estudiantes cargados correctamente.");
         } catch (FileNotFoundException e) {
-            System.out.println("x Archivo no encontrado. Se creará al guardar.");
+            System.out.println("OH NO: Archivo no encontrado. Se creará al guardar.");
         } catch (IOException e) {
-            System.out.println("x Error al leer archivo: " + e.getMessage());
+            System.out.println("OH NO: Error al leer archivo: " + e.getMessage());
         }
     }
 
     public void mostrarEstudiantes() {
+        System.out.println("\n--- Listado de Estudiantes ---");
         for (Estudiante e : estudiantes) {
             System.out.println(e);
         }

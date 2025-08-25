@@ -33,7 +33,7 @@ public class EstudiantesUniProgra {
                         System.out.print("Ingrese ID, ejemplo, 2500012025: ");
                         id = sc.nextLine();
                         if (id == null || !id.matches("\\d{10}")) {
-                            throw new IllegalArgumentException("El ID debe tener exactamente 10 iígitos.");
+                            throw new IllegalArgumentException("El ID debe tener exactamente 10 digitos.");
                         }
                         break; // si no lanza error, sale del bucle
                     } catch (IllegalArgumentException e) {
@@ -44,7 +44,7 @@ public class EstudiantesUniProgra {
                 // === Nombre ===
                 while (true) {
                     try {
-                        System.out.print("Ingrese Nombre (mínimo 5 letras): ");
+                        System.out.print("Ingrese Nombre (minimo 5 letras): ");
                         nombre = sc.nextLine();
                         nombre = nombre.trim();
                         if (nombre.length() < 5 || !nombre.matches("^[a-zA-Z]+$")) { //matches indica si la cadena coincide o no con la expresión regular dada
@@ -59,7 +59,7 @@ public class EstudiantesUniProgra {
                 // === Carrera ===
                 while (true) {
                     try {
-                        System.out.print("Ingrese Carrera (mínimo 5 letras): ");
+                        System.out.print("Ingrese Carrera (minimo 5 letras): ");
                         carrera = sc.nextLine();
                         carrera = carrera.trim();
                         if (carrera.length() <= 5 || !carrera.matches("^[a-zA-Z]+$")) { 
@@ -71,7 +71,7 @@ public class EstudiantesUniProgra {
                     }
                 }
                 
-                //beca
+                // === beca ===
                 while (true) {
                     try {
                         System.out.print("Ingrese porcentaje de beca (0 para estudiante general): ");
@@ -95,12 +95,21 @@ public class EstudiantesUniProgra {
                     }
                 }
 
-                System.out.print("¿Desea agregar otro estudiante? (s/n): ");
-                continuar = sc.nextLine();
+                //=== guardar otro ===
+                String otro = "";
+                while (true) {
+                    System.out.print("Desea ingresar otro estudiante? (s/n): ");
+                    otro = sc.nextLine().trim().toLowerCase();
 
-            } catch (NumberFormatException e) {
-                System.out.println("x Error: El porcentaje debe ser un número.");
-                // vuelve al inicio del while
+                    if (otro.equals("s") || otro.equals("n")) {
+                        if (!otro.equalsIgnoreCase("s")) {
+                            continuar = "n";
+                        }
+                        break;
+                    } else {
+                        System.out.println("Entrada invalida. Por favor escriba 's' para SI o 'n' para NO.");
+                    }
+                }        
             } catch (IllegalArgumentException e) {
                 System.out.println("x Error: " + e.getMessage());
                 System.out.println("Intente nuevamente.\n");
