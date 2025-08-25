@@ -1,2 +1,8 @@
 001,K,Ingeniería
 002,Juan Perez,Medicina,50.0
+3,karen,Ingenieria
+4,cris,Medicina,50.0
+5,cris,Medicina,50.0
+6,karen,Ingenieria
+7,cris,Medicina,50.0
+8,cris,Medicina,50.0
