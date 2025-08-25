@@ -49,20 +49,28 @@ public class RegistroEstudiantes {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
+                if (linea.trim().isEmpty()) {
+                    continue; // Ignorar líneas vacías
+                }
                 String[] datos = linea.split(",");
-                if (datos[3].equals("Becado")) {
-                    EstudianteBecado eb = new EstudianteBecado("", "", "", 0);
-                    eb.setId(datos[0]);
-                    eb.setNombre(datos[1]);
-                    eb.setCarrera(datos[2]);
-                    eb.setPorcentajeBeca(Double.parseDouble(datos[4]));
-                    agregarEstudiante(eb);
-                } else if (datos[3].equals("General")) {
-                    EstudianteGeneral eg = new EstudianteGeneral("", "", "");
-                    eg.setId(datos[0]);
-                    eg.setNombre(datos[1]);
-                    eg.setCarrera(datos[2]);
-                    agregarEstudiante(eg);
+
+                if (datos.length >= 4) {
+                    if (datos[3].equalsIgnoreCase("Becado")) {
+                        EstudianteBecado eb = new EstudianteBecado("", "", "", 0);
+                        eb.setId(datos[0]);
+                        eb.setNombre(datos[1]);
+                        eb.setCarrera(datos[2]);
+                        eb.setPorcentajeBeca(Double.parseDouble(datos[4]));
+                        agregarEstudiante(eb);
+                    } else if (datos[3].equalsIgnoreCase("General")) {
+                        EstudianteGeneral eg = new EstudianteGeneral("", "", "");
+                        eg.setId(datos[0]);
+                        eg.setNombre(datos[1]);
+                        eg.setCarrera(datos[2]);
+                        agregarEstudiante(eg);
+                    }
+                } else {
+                    System.out.println("Linea invalida en el archivo: " + linea);
                 }
             }
             System.out.println("Estudiantes cargados correctamente.");
@@ -80,9 +88,9 @@ public class RegistroEstudiantes {
             return;
         }
         for (Estudiante e : estudiantes) {
-            System.out.print("ID: " + e.getId() + " | Nombre: " + e.getNombre() + " | Carrera: " + e.getCarrera());
+            System.out.print("ID: " + e.getId() + ", Nombre: " + e.getNombre() + ", Carrera: " + e.getCarrera());
             if (e instanceof EstudianteBecado eb) {
-                System.out.print(" | Beca: " + eb.getPorcentajeBeca() + "%");
+                System.out.print(", Beca: " + eb.getPorcentajeBeca() + "%");
             }
         }
         System.out.println("\n");
