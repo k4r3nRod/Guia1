@@ -1,0 +1,5 @@
+ID,NOMBRE,CARRERA,PORCENTAJE_BECA
+2500522022,karen,sistemas
+2500532022,cristian,sistemas,20.0
+1500672022,alejandra,idiomas
+2000752023,kevin,idiomas,50.0

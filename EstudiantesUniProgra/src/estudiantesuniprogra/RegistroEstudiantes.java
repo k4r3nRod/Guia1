@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class RegistroEstudiantes {
 
     private ArrayList<Estudiante> estudiantes = new ArrayList<>();
-    private final String archivo = "Estudiante.txt";
+    private final String archivo = "ArchivoEstudiantes.txt";
 
     public RegistroEstudiantes() {
     }

@@ -1,8 +1,0 @@
-ID,NOMBRE,CARRERA,PORCENTAJE_BECA
-2500522022,Karen Rodriguez,Sistemas,20.0
-2500532022,Rene Ortiz,Sistemas,50.0
-2593152022,Cristian Steven,Idiomas
-2500522022,Karen Rodriguez,Sistemas,20.0
-2500532022,Rene Ortiz,Sistemas,50.0
-2593152022,Cristian Steven,Idiomas
-2510252023,Alejandra Rodas,Comunicaicones
