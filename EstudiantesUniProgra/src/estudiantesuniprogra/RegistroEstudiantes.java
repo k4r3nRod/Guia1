@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class RegistroEstudiantes {
 
     private ArrayList<Estudiante> estudiantes = new ArrayList<>();
-    private final String archivo = "estudiantes.txt";
+    private final String archivo = "Estudiante.txt";
 
     public RegistroEstudiantes() {
     }
@@ -40,15 +40,14 @@ public class RegistroEstudiantes {
             File f = new File(archivo);
             BufferedWriter bw;
 
-            // Si el archivo ya existe, modo append
-            if (f.exists()) {
-                bw = new BufferedWriter(new FileWriter(f, true));
-                bw.newLine();
-            } else {
-                // Si no existe, crearlo y escribir encabezado
+            if (!f.exists()) {
+                // Crear archivo con encabezado
                 bw = new BufferedWriter(new FileWriter(f));
                 bw.write("ID,NOMBRE,CARRERA,PORCENTAJE_BECA");
                 bw.newLine();
+            } else {
+                // Abrir archivo en modo append
+                bw = new BufferedWriter(new FileWriter(f, true));
             }
 
             // Guardar cada estudiante
@@ -68,7 +67,7 @@ public class RegistroEstudiantes {
     public void cargarEstudiantes() {
         File f = new File(archivo);
         if (!f.exists()) {
-            System.out.println("OH NO: Archivo no encontrado. Se creará al guardar.");
+            System.out.println("OH NO: Archivo no encontrado. Se creara al guardar.");
             return;
         }
 

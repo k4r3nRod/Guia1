@@ -47,7 +47,7 @@ public class EstudiantesUniProgra {
                         System.out.print("Ingrese Nombre (minimo 5 letras): ");
                         nombre = sc.nextLine();
                         nombre = nombre.trim();
-                        if (nombre.length() < 5 || !nombre.matches("^[a-zA-Z]+$")) { //matches indica si la cadena coincide o no con la expresión regular dada
+                        if (nombre.length() < 5 || !nombre.matches("^[a-zA-Z ]+$")) { //matches indica si la cadena coincide o no con la expresión regular dada
                             throw new IllegalArgumentException("El nombre debe tener solo letras y al menos 5 caracteres.");
                         }
                         break;
@@ -62,7 +62,7 @@ public class EstudiantesUniProgra {
                         System.out.print("Ingrese Carrera (minimo 5 letras): ");
                         carrera = sc.nextLine();
                         carrera = carrera.trim();
-                        if (carrera.length() <= 5 || !carrera.matches("^[a-zA-Z]+$")) { 
+                        if (carrera.length() <= 5 || !carrera.matches("^[a-zA-Z ]+$")) { 
                             throw new IllegalArgumentException("La carrera debe tener solo letras y al menos 5 caracteres.");
                         }
                         break;
